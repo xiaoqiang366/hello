@@ -41,7 +41,8 @@
   },
   "browserslist": [
     "> 1%",
-    "last 2 versions",
+    "android >= 4.3",
+    "ios >= 6.0",
     "not ie <= 8"
   ]
 }
