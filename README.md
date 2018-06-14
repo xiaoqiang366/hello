@@ -4,7 +4,7 @@
 
 观察者模式主要包含 **目标对象** 和 **观察者** 两个基类。目标提供维护观察者的一系列方法，观察者提供更新接口。具体观察者和具体目标继承各自的基类，然后具体观察者把自己 **注册** 到具体目标里，在具体目标发生变化时候，**调度观察者的更新方法**。
 
-个人觉得这里需要注意几个点:
+个人觉得这里需要注意几个点:
 
 1. 观察者需要将自己注册到目标中，这样才能使两者产生依赖关系。这样在目标对象发生变化的时候才能够通知到观察者。
 2. 观察者要有处理通知的能力，也就是说观察者需要有一个能够处理消息的方法(Function)。
@@ -18,12 +18,12 @@
 项目是通过 vue 和 Element UI组件库通过观察模式的方式比较直观的展示了目标对象和观察者之间的关系。下面是一些简要的说明:
 
 + Course: 课程(目标对象)
-+ StudentList -> Course 课程有一个学生列表的属性用于存放订阅课程的学生。
++ StudentList -> Course 课程有一个学生列表的属性用于存储订阅课程的学生。
 + Student: 学生(观察者)
-+ 添加课程(`new Course()`), 也就是创建目标对象, 目标对象可以有一个也可以有多个。
++ 添加课程(`new Course()`), 也就是创建目标对象, 目标对象可以有一个也可以有多个。
 + 添加学生(`new Student`), 创建观察者。
-+ 学生订阅课程, 也就是观察者把自己注册到目标对象的过程。
-+ 实例中还添加了一个学生取消订阅课程的功能，取消订阅后，学生将不再收到取消的课程通知；如有需要可以重新订阅课程。
++ 学生订阅课程, 也就是观察者把自己注册到目标对象的过程。
++ 实例中还添加了一个学生取消订阅课程的功能，取消订阅后，学生将不再收到取消的课程通知；如有需要可以重新订阅课程。
 
 ```javascript
 const c = new Course('《JavaScript高级程序设计》'); // 创建课程(目标)
@@ -37,13 +37,14 @@ const s = new Student('张小明', msgHandle); // 创建学生(观察者)
 
 // 订阅课程(观察者将自己注入到目标中)
 s.subscribe(c);
-// 发送通知到该课程的每个订阅者(发送通知); 此时 s 就会收到有关 c 课程的消息通知。之 s 所以能够收到消息是因为 c.notify 会遍历每个订阅者并把消息内容传递给每个订阅者, 让订阅者根据自己的需要处理(msgHandle)收到的消息。
+// 发送通知到该课程的每个订阅者(发送通知),此时s就会收到有关c课程的消息通知。
+// 之s所以能够收到消息是因为c.notify会遍历每个订阅者并把消息内容传递给每个订阅者, 让订阅者根据自己的需要处理(msgHandle)收到的消息。
 c.notify('课程更新啦~');
 ```
 
 ## 项目运行
 
-运行前确保安装了[node](https://nodejs.org/zh-cn/download/) 和 [Vue](https://cn.vuejs.org/index.html) 提供 [官方的 CLI](https://github.com/vuejs/vue-cli), 具体配置参考[官网说明](https://github.com/vuejs/vue-docs-zh-cn/blob/master/vue-cli/README.md#%E4%BB%8B%E7%BB%8D)。
+运行前确保安装了[node](https://nodejs.org/zh-cn/download/) 和 [Vue](https://cn.vuejs.org/index.html) 提供 [官方的CLI](https://github.com/vuejs/vue-cli), 具体配置参考[官网说明](https://github.com/vuejs/vue-docs-zh-cn/blob/master/vue-cli/README.md#%E4%BB%8B%E7%BB%8D)。
 
 ```shell
 npm install -g @vue/cli
@@ -61,11 +62,9 @@ build:dev
 ```shell
 # 安装依赖模块
 npm install
-# 本地运行
+# 本地运行
 npm run serve
-# 编译打包(注意根据需要修改vue.config.js中的配置)
+# 编译打包(注意根据需要修改vue.config.js中的配置)
 npm run build
 npm run build:dev
 ```
-
-<a href="https://github.com/aoxiaoqiang/hello"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_green_007200.png" alt="Fork me on GitHub"></a>
