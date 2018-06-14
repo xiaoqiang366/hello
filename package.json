@@ -3,11 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "serve": "cross-env NODE_ENV=develop vue-cli-service serve",
-    "build": "cross-env NODE_ENV=production vue-cli-service build",
+    "serve": "vue-cli-service serve",
+    "build:dev": "vue-cli-service build --mode development",
+    "build": "vue-cli-service build",
     "lint": "vue-cli-service lint --fix",
-    "test:dev": "cross-env NODE_ENV=develop mocha --watch",
-    "test": "cross-env NODE_ENV=production mocha --watch"
+    "test": "mocha"
   },
   "dependencies": {
     "element-ui": "2.4.1",
