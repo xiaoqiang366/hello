@@ -3,9 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "serve": "cross-env NODE_ENV=develop vue-cli-service serve",
+    "build": "cross-env NODE_ENV=production vue-cli-service build",
+    "lint": "vue-cli-service lint --fix",
+    "test:dev": "cross-env NODE_ENV=develop mocha --watch",
+    "test": "cross-env NODE_ENV=production mocha --watch"
   },
   "dependencies": {
     "element-ui": "2.4.1",
@@ -16,8 +18,10 @@
     "@vue/cli-plugin-eslint": "^3.0.0-beta.15",
     "@vue/cli-service": "^3.0.0-beta.15",
     "@vue/eslint-config-standard": "^3.0.0-beta.16",
+    "cross-env": "5.1.6",
     "less": "3.0.4",
     "less-loader": "4.1.0",
+    "mocha": "5.2.0",
     "vue-template-compiler": "^2.5.16"
   },
   "eslintConfig": {
